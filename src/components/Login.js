@@ -6,6 +6,8 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { AVATAR } from "../utils/constants";
+import {BG_URL} from "../utils/constants"
+ 
 
 const Login = () => {
 
@@ -81,7 +83,7 @@ const Login = () => {
             <Header></Header>
 
             <div className="absolute inset-0 -z-10">
-                <img className="h-full w-full object-cover" alt="bgimg" src="https://assets.nflxext.com/ffe/siteui/vlv3/9ddb442a-aca7-4d85-9cd1-dbed62f18f26/web/IN-en-20251222-TRIFECTA-perspective_a882efaa-75c8-4143-9dc1-4f9932a791ac_large.jpg" />
+                <img className="h-full w-full object-cover" alt="bgimg" src={BG_URL} />
             </div>
 
             <div className="absolute inset-0 bg-black/60"></div>

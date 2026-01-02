@@ -1,7 +1,7 @@
 
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
@@ -52,15 +52,15 @@ const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   };
 
   return (
-    <div className="bg-gradient-to-b from-black absolute z-10 flex justify-between w-full pt-4 pl-4 pr-4">
+    <div className="flex-col md:flex-row justify-between bg-gradient-to-b from-black absolute z-10 flex w-full pt-4 pl-4 pr-4">
       <div className="">
-        <img className="w-44" alt="logo" src={LOGO} />
+       <Link to="/"><img className="w-28 md:w-44" alt="logo" src={LOGO} /></Link> 
       </div>
-      {user && <div className="flex gap-4 items-center">
+      {user && <div className="flex gap-4 items-center justify-end">
 
         {showGptSearch && (
             <select
-              className="p-2 m-2 bg-gray-900 text-white"
+              className="m-0 text-sm md:text-lg p-2 md:m-2 bg-gray-900 text-white"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
@@ -72,12 +72,12 @@ const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
           )}
 
         <button onClick={handleGptSearchClick}
-          className="py-2 px-4 mx-2 my-2 bg-purple-800 text-white rounded-lg">
-           {showGptSearch ? "Home" : "GPT Search"}
+          className="py-1 md:py-2 px-4 mx-0 md:mx-2 my-0 md:my-2 bg-gray-800 text-sm md:text-lg text-white rounded-lg">
+           {showGptSearch ? "Home" : "Search"}
         </button>
-        <img className="w-10 h-10" alt="user icon" src={user?.photoURL} />
-        <button className="text-white" onClick={handleSignOut}>(Sign Out)</button>
-      </div>
+        <img className=" hidden md:block w-10 h-10" alt="user icon" src={user?.photoURL} />
+        <button className="py-1 md:py-2 px-2 md-px-4 mx-0 md:mx-2 my-0 md:my-2 text-sm md:text-lg bg-gray-800 text-white rounded-lg" onClick={handleSignOut}>Sign Out</button>
+      </div> 
       }
     </div>
 

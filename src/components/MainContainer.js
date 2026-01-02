@@ -11,11 +11,11 @@ const MainContainer = () => {
 
     const { original_title, overview, id } = mainMovie
     return (
-        <div className="w-full">
+        <div className="w-full flex flex-col-reverse md:flex-row-reverse">
             <VideoTitle title={original_title} overview={overview}></VideoTitle>
             <VideoBackground movieID={id}></VideoBackground>
         </div>
-    )
+    ) 
 }
 
 export default MainContainer

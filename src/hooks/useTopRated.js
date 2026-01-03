@@ -19,7 +19,10 @@ const useTopRated = () => {
       dispatch(addTopRated(json.results));
     };
   useEffect(() => {
-    !toprated && getTopRated();
+    if(!toprated){
+     getTopRated();
+
+    }
   }, []);
 };
 

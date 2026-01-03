@@ -2,15 +2,17 @@
 import { useSelector } from "react-redux";
 import lang from "../utils/languageConstantsdata";
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { addMovieSearch } from "../utils/moviesSlice"
 
 
 const GPTSearchBar = () => {
     const langKey = useSelector((store) => store.config.lang);
     const searchText = useRef(null);
+    const disPatch = useDispatch()
 
-    const handleGptSearchClick = async () => {
-        console.log(searchText.current.value);
-
+    const handleGptSearchClick = () => {
+        disPatch(addMovieSearch(searchText.current.value))
     }
 
     return (
@@ -25,6 +27,7 @@ const GPTSearchBar = () => {
                 </button>
 
             </form>
+
         </div>
     )
 }

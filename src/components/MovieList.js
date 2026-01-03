@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import MovieCard from "./MovieCard"
 
 const MovieList = ({ title, movies }) => {
@@ -7,12 +8,14 @@ const MovieList = ({ title, movies }) => {
       <div className="card_slider flex overflow-x-scroll ">
         <div className="flex" >
          { movies?.map((movie) => (
-          <MovieCard key={movie.id} posterPath={movie.poster_path}></MovieCard> 
+          <Link key={movie.id} to={"/details/"+movie.id}>
+          <MovieCard  posterPath={movie.poster_path}></MovieCard> 
+          </Link>
           ))}
         </div>
       </div>
     </div>
-  )
+  ) 
 }
 
 export default MovieList

@@ -3,7 +3,7 @@ import { API_OPTION } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addTrailerVideo } from "../utils/moviesSlice"
 
-
+ 
 const useMoviesTrailer = (movieID) => {
 
     const disPatch = useDispatch()

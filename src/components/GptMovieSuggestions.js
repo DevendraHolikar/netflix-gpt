@@ -16,7 +16,7 @@ const GptMovieSuggestions = () => {
   const filteredMovies = movieData.filter(
     (movie) => movie.poster_path
   );
-
+ 
   if (!showMoviesSearch) return null;
 
   return (
@@ -33,11 +33,8 @@ const GptMovieSuggestions = () => {
         filteredMovies.map((movie) => (
           <GptMovieCard
             key={movie.id}
+            id={movie.id}
             posterPath={movie.poster_path}
-            title={movie.title}
-            overview={movie.overview}
-            release_date={movie.release_date}
-            backdrop_path={movie.backdrop_path}
           />
         ))
       )}

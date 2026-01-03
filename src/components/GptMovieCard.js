@@ -1,6 +1,7 @@
 import { IMG_CND_URL } from "../utils/constants"
 
 const GptMovieCard = ({ posterPath, title, overview, release_date, backdrop_path }) => {
+    
 
     // console.log(posterPath)
     return (

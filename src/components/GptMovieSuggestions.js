@@ -9,27 +9,37 @@ const GptMovieSuggestions = () => {
 
   const movieData = useSelector((store) => store.movies.movieSearchFetchData) || [];
 
-  console.log(movieData)
+  const loading = useSelector(
+    (store) => store.movies.movieSearchLoading
+  );
+
+  const filteredMovies = movieData.filter(
+    (movie) => movie.poster_path
+  );
+
+  if (!showMoviesSearch) return null;
 
   return (
     <div className="bg-black flex gap-10 flex-wrap pl-10 pr-10 justify-center mt-4">
-      { showMoviesSearch && movieData?.length === 0 ? (
-        <div className="w-full pt-10 font-bold text-2xl text-center text-white">
-          No results found
+      {loading ? (
+        <div className="w-full pt-10 text-2xl text-center text-white">
+          Searching...
+        </div>
+      ) : filteredMovies.length === 0 ? (
+        <div className="w-full pt-10 text-2xl text-center text-white">
+          No data found
         </div>
       ) : (
-        movieData
-          ?.filter(movie => movie.poster_path)
-          .map(movie => (
-            <GptMovieCard
-              key={movie.id}
-              posterPath={movie.poster_path}
-              title={movie.title}
-              overview={movie.overview}
-              release_date={movie.release_date}
-              backdrop_path={movie.backdrop_path}
-            />
-          ))
+        filteredMovies.map((movie) => (
+          <GptMovieCard
+            key={movie.id}
+            posterPath={movie.poster_path}
+            title={movie.title}
+            overview={movie.overview}
+            release_date={movie.release_date}
+            backdrop_path={movie.backdrop_path}
+          />
+        ))
       )}
     </div>
 

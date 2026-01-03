@@ -6,7 +6,7 @@ import { addTopRated } from "../utils/moviesSlice";
 const useTopRated = () => {
   const dispatch = useDispatch();
 
-  const toprated = useSelector((store) => store.movies.toprated );
+  // const toprated = useSelector((store) => store.movies.toprated );
 
 
     const getTopRated = async () => {
@@ -19,10 +19,10 @@ const useTopRated = () => {
       dispatch(addTopRated(json.results));
     };
   useEffect(() => {
-    if(!toprated){
+    // if(!toprated){
      getTopRated();
 
-    }
+    // }
   }, []);
 };
 
